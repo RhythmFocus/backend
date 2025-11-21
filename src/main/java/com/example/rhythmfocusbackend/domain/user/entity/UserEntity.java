@@ -70,4 +70,19 @@ public class UserEntity {
         this.email = dto.getEmail();
         this.nickname = dto.getNickname();
     }
+
+    public void addTickets(Integer tickets) {
+        this.tickets += tickets;
+    }
+
+    public void useTickets(Integer tickets) {
+        if (this.tickets < tickets) {
+            throw new IllegalStateException("보유한 티켓이 부족합니다.");
+        }
+        this.tickets -= tickets;
+    }
+
+    public void levelUp() {
+        this.level++;
+    }
 }
