@@ -50,6 +50,14 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "level", nullable = false)
+    @Builder.Default
+    private Integer level = 1;
+
+    @Column(name = "tickets", nullable = false)
+    @Builder.Default
+    private Integer tickets = 0;
+
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
