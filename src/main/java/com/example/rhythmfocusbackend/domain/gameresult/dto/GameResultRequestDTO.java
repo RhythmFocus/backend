@@ -50,4 +50,8 @@ public class GameResultRequestDTO {
     private Integer totalNotes;
 
     private Double averageOffset;
+
+    @NotNull
+    @Min(0)
+    private Integer earnedTickets;
 }

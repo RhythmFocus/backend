@@ -61,6 +61,9 @@ public class GameResultEntity {
     @Column(name = "average_offset")
     private Double averageOffset;
 
+    @Column(name = "earned_tickets", nullable = false)
+    private Integer earnedTickets;
+
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdAt;
