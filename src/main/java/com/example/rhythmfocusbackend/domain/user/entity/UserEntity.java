@@ -50,6 +50,14 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "level", nullable = false)
+    @Builder.Default
+    private Integer level = 1;
+
+    @Column(name = "tickets", nullable = false)
+    @Builder.Default
+    private Integer tickets = 0;
+
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
@@ -61,5 +69,20 @@ public class UserEntity {
     public void updateUser(UserRequestDTO dto) {
         this.email = dto.getEmail();
         this.nickname = dto.getNickname();
+    }
+
+    public void addTickets(Integer tickets) {
+        this.tickets += tickets;
+    }
+
+    public void useTickets(Integer tickets) {
+        if (this.tickets < tickets) {
+            throw new IllegalStateException("보유한 티켓이 부족합니다.");
+        }
+        this.tickets -= tickets;
+    }
+
+    public void levelUp() {
+        this.level++;
     }
 }

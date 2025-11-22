@@ -42,7 +42,10 @@ public class GameResultService {
                 .missCount(dto.getMissCount())
                 .totalNotes(dto.getTotalNotes())
                 .averageOffset(dto.getAverageOffset())
+                .earnedTickets(dto.getEarnedTickets())
                 .build();
+
+        user.addTickets(dto.getEarnedTickets());
 
         return gameResultRepository.save(gameResultEntity).getId();
     }

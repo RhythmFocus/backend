@@ -49,6 +49,8 @@ public class UserService implements UserDetailsService {
                 .roleType(UserRoleType.USER)
                 .nickname(dto.getNickname())
                 .email(dto.getEmail())
+                .level(1)
+                .tickets(0)
                 .build();
 
         return userRepository.save(entity).getId();
@@ -119,6 +121,6 @@ public class UserService implements UserDetailsService {
         UserEntity entity = userRepository.findByUsernameAndIsLock(username, false)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
-        return new UserResponseDTO(username, entity.getIsSocial(), entity.getNickname(), entity.getEmail());
+        return new UserResponseDTO(username, entity.getIsSocial(), entity.getNickname(), entity.getEmail(), entity.getLevel(), entity.getTickets());
     }
 }
